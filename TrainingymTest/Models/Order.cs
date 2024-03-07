@@ -8,9 +8,9 @@ namespace TrainingymTest.Models
             public long MemberId { get; set; }
             public long ProductId { get; set; }
             [Column(TypeName = "datetime2(0)")]
-            public DateTime dateOrder { get; set; }
-            public Product product { get; set; }
-            public Member member { get; set; }
+            public DateTime DateOrder { get; set; }
+            public Product Product { get; set; }
+            public Member Member { get; set; }
         
     }
 }
