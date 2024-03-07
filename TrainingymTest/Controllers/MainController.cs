@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using TrainingymTest.Models;
 using TrainingymTest.Repositories;
 
@@ -77,6 +79,19 @@ namespace TrainingymTest.Controllers
                 return Ok(new { Message = "Seed executed!" });
             }
             else return BadRequest(new { Message = "DB is not empty" });
+        }
+
+        [HttpGet("last-order")]
+        public async Task<IActionResult> LastOrder([FromQuery][BindRequired] long MemberId)
+        {
+            if (ModelState.IsValid)
+            {
+                var lastOrder = await _OrdRepo.GetLastOrderByMemberId(MemberId);
+
+                return Ok(lastOrder);
+            }
+            return BadRequest();
+
         }
 
     }

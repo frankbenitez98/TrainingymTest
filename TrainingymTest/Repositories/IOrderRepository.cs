@@ -1,4 +1,5 @@
-﻿using TrainingymTest.Models;
+﻿using TrainingymTest.DTOs;
+using TrainingymTest.Models;
 
 namespace TrainingymTest.Repositories
 {
@@ -8,5 +9,6 @@ namespace TrainingymTest.Repositories
         Task<Order?> FindById(long Id);
         Task<int> Create(List<Order> orders);
         Task<bool> Any();
+        Task<LastOrderByMemberDTO?> GetLastOrderByMemberId(long Id);
     }
 }
