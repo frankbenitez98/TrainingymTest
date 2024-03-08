@@ -7,6 +7,7 @@ namespace TrainingymTest.Repositories
     public class MemberRepository : IMemberRepository
     {
         private readonly ApplicationDBContext _context;
+
         public MemberRepository(ApplicationDBContext context)
         {
             _context = context;

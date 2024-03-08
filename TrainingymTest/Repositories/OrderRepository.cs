@@ -30,6 +30,7 @@ namespace TrainingymTest.Repositories
         {
             return await _context.Orders.FirstOrDefaultAsync(x => x.Id == Id);
         }
+
         public async Task<bool> Any()
         {
             return await _context.Orders.AnyAsync();

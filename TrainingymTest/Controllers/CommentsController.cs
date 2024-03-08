@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RestSharp;
+using System.Diagnostics;
 using TrainingymTest.DTOs;
 
 namespace TrainingymTest.Controllers
@@ -17,7 +18,6 @@ namespace TrainingymTest.Controllers
             var comments = await GetCommentsFromAPI();
             if (comments != null)
             {
-
                 var topPostIds = comments
                     .GroupBy(comment => comment.PostId)
                     .OrderByDescending(group => group.Count())
@@ -39,15 +39,13 @@ namespace TrainingymTest.Controllers
             {
                 var client = new RestClient(apiUrl);
                 var request = new RestRequest();
-
                 var response = await client.ExecuteAsync(request);
                 List<CommentDTO> comments = JsonConvert.DeserializeObject<List<CommentDTO>>(response.Content);
                 return comments;
-
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"ERROR: {ex.Message}");
+                Debug.WriteLine($"ERROR: {ex.Message}");
                 return null;
             }
         }
