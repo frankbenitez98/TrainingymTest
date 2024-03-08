@@ -22,7 +22,11 @@ namespace TrainingymTest.Controllers
                     .GroupBy(comment => comment.PostId)
                     .OrderByDescending(group => group.Count())
                     .Take(3)
-                    .Select(group => group.Key)
+                    .Select(group => new
+                    {
+                        PostId = group.Key,
+                        CommentCount = group.Count()
+                    })
                     .ToList();
 
                 return Ok(topPostIds);
