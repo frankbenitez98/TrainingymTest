@@ -6,7 +6,10 @@
   * Abrir Visual Studio 2022.
   * Clonar repositorio de la siguiente url `https://github.com/frankbenitez98/TrainingymTest.git`
   * Moverse la rama **develop** donde se realizaron todos los ejercicios. 
-  * Abrir el NugetPackage Console y actualizar la DB con el comando `Update-Database`.
+  * Abrir el NugetPackage Console y actualizar la DB con el comando
+  ```bash
+Update-Database
+```
   * Correr la App.
   
   ### Primeros pasos:
@@ -17,7 +20,11 @@
   5. Se creo un repositorio en github donde se subio el proyecto y se separo en la rama `main` y la rama `develop`.
      
   ### Generacion de Script SQL:
-  luego de haber creado todas las tablas con sus respectivas relaciones se utilizo el comando `Script-Migration -Idempotent` para crear el script y este porteriormente se guardo en el archivo **SQLScript.sql** para   para que quede disponible en caso de un uso futuro. 
+  luego de haber creado todas las tablas con sus respectivas relaciones se utilizo el comando 
+   ```bash
+Script-Migration -Idempotent
+```
+  para crear el script y este porteriormente se guardo en el archivo **SQLScript.sql** para   para que quede disponible en caso de un uso futuro. 
 
   ###  Repository Layer:
   Se opto por utilizar la capa de repositorio para separar la logica de las consultas a la base de datos con la del resto del controlador, de esta manera se mantiene un codigo mucho mas escalable haciendo uso de la   inyeccion de dependiencias en nuestra aplicacion. 
